@@ -1,0 +1,44 @@
+@import "./src/app/styles/mixins"
+
+html
+  height: 100%
+
+.container
+  display: flex
+  flex-direction: row
+  height: 100%
+
+main
+  min-height: 100vh
+  flex-grow: 1
+  max-width: 1170px
+  min-width: 732px
+  width: 73vw
+
+  margin: 0 auto
+
+.navigation
+  width: 100%
+  margin: 40px auto
+  display: flex
+  flex-direction: column
+  &__wrapper
+    background-color: $c-gray
+    max-width: 238px
+    min-width: 114px
+    width: 14.8vw
+    height: 100vh
+  &__link
+    padding: 0 20px
+    text-decoration: none
+    text-transform: uppercase
+    color: $c-main
+
+    height: 35px
+    @include text-12
+    &:hover
+      color: black
+
+.main
+  &__wrapper
+    width: 100%

@@ -1,0 +1,34 @@
+@import "../../../styles/mixins"
+.overlay
+  position: fixed
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  background-color: rgba(#353535, 0.6)
+  width: 100%
+  height: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+  z-index: 10
+
+.form
+  &__wrapper
+    padding: 40px 40px
+    width: 604px
+    border: 1px solid #EFF0F7
+    box-shadow: 0 5px 16px rgba(8, 15, 52, 0.06)
+    border-radius: 34px
+    background-color: #F6F6F6
+  &__title
+    color: $c-black
+    @include text-33
+    text-align: center
+    font-weight: bold
+  &__separator
+    background-color: #D9DBE9
+    width: 100%
+    height: 1px
+    margin: 20px 0 70px 0
+

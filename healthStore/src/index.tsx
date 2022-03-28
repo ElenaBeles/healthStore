@@ -3,10 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.sass';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {ModalConstructor} from "./app/component/Modals/ModalConstructor";
+import { Provider } from 'mobx-react';
+import mainStore from "./app/stores/MainStore";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <Provider {...mainStore}>
+          <App />
+          <ModalConstructor/>
+      </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

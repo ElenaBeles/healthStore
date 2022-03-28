@@ -1,0 +1,18 @@
+@import "/src/app/styles/mixins"
+
+.button
+  &__wrapper
+    background-color: $c-blue
+    color: $c-gray
+    @include text-20
+
+    display: flex
+    justify-content: center
+    align-items: center
+    padding: 4px 10px
+
+    border: 2px solid $c-gray
+    border-radius: 8px
+
+  &__icon
+    margin-right: 8px

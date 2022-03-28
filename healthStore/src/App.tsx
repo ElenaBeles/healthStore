@@ -5,16 +5,26 @@ import {AboutUs} from "./app/pages/Abot_Us";
 import {Header} from "./app/component/Header";
 import {Contacts} from "./app/pages/Contacts";
 import {Recommendations} from "./app/pages/Recommendations";
+import {ChoiceOfSpecialty} from "./app/pages/Registration/ChoiceOfSpecialty";
+import {DoctorSChoice} from "./app/pages/Registration/Doctor'sChoice";
+import mainStore from "./app/stores/MainStore";
+import {Provider} from "mobx-react";
+import {Footer} from "./app/component/Footer";
+import {Home} from "./app/pages/Home";
 
 function App() {
   return (
       <BrowserRouter>
-          <Header/>
-          <Routes>
-              <Route path='/about_us' caseSensitive element={<AboutUs />}/>
-              <Route path='/contacts' caseSensitive element={<Contacts />}/>
-              <Route path='/recommendations' caseSensitive element={<Recommendations />}/>
-          </Routes>
+          <Provider {...mainStore}>
+              <Routes>
+                  <Route path='/' caseSensitive element={<Home />}/>
+                  <Route path='about_us' caseSensitive element={<AboutUs />}/>
+                  <Route path='contacts' caseSensitive element={<Contacts />}/>
+                  <Route path='recommendations' caseSensitive element={<Recommendations />}/>
+                  <Route path='make_an_appointment' caseSensitive element={<ChoiceOfSpecialty />}/>
+                  <Route path='make_an_appointment/:specialityId/' caseSensitive element={<DoctorSChoice />}/>
+              </Routes>
+          </Provider>
       </BrowserRouter>
   );
 }

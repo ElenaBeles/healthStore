@@ -16,7 +16,7 @@ export const Button = (props: IButton) => {
             className = { cx( className, {
                 primary: status === 'primary',
                 secondary: status === 'secondary',
-                usually: status === 'usually'
+                usually: status === 'usually',
             })  }
             onClick = { onClick }
             type = { type }

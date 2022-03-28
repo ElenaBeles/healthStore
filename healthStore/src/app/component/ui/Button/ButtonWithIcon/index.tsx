@@ -8,22 +8,20 @@ import {Button} from "../index";
 
 const cx = cn.bind(styles);
 
-export const ButtonWithIcon = ( props : IButtonWithIcon ) => {
-    const { onClick, src, status, text, type } = props;
+export const ButtonWithIcon = (props: IButtonWithIcon) => {
+    const { text, onClick, className, type, src } = props;
 
     return(
-        <div>
-            <div className = { cx( {
-                wrapper_ButtonWithImg_active: status === 'active',
-                wrapper_ButtonWithImg: status !== 'active'
-            })  }>
-                <Icon  name = { src }/>
-                <Button
-                    onClick = { onClick }
-                    text = { text }
-                    type = { type }
-                    status={ "usually"}/>
-            </div>
+        <div className={ styles.wrapper }>
+            <button
+                className = { cx( className, styles.button__wrapper) }
+                onClick = { onClick }
+                type = { type }
+            >
+                <Icon className={ styles.button__icon } name={ src } size={ "24" }/>
+                { text }
+            </button>
         </div>
+
     )
 }

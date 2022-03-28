@@ -2,10 +2,25 @@
 
 .wrapper
   min-width: 124px
-  max-width: 230px
-  height: 240px
+  max-width: 358px
+  height: 256px
   width: 14.3vw
   background-color: $c-gray
 
-.title, .icon
-  color: #63605F
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  &:hover
+    background-color: $c-orange
+    cursor: pointer
+
+.title
+  color: $c-main
+  margin-top: 20px
+  font-size: 20px
+
+.img
+  max-width: 52px
+  min-width: 30px
+  width: 3vw

@@ -8,7 +8,7 @@ export const Card: FC<ICard> = (props: ICard) => {
     const { img, title } = props
     return (
         <div className={ styles.wrapper }>
-            <Icon className={ styles.icon} name = { img } size={ "48"} />
+            <img className={ styles.img } src={ img } alt=""/>
             <p className={ styles.title }>{ title }</p>
         </div>
     );

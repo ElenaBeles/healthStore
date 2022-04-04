@@ -1,17 +1,19 @@
 @import "../../styles/mixins"
 .form
+  max-height: 70vh
+  overflow-y: auto
   &__wrapper
     display: flex
     flex-direction: column
   &__field
-    border: 1px solid rgba(0, 11, 38, 0.16)
+    border: 1px solid rgba(#EFF0F6, 0.16)
     box-sizing: border-box
-    border-radius: 8px
-    padding: 20px 16px
-
-    font-size: 14px
-    font-weight: 400
-    line-height: 20px
+    box-shadow: 0 2px 6px rgba(19, 18, 66, 0.07)
+    border-radius: 46px
+    height: 60px
+    padding: 20px
+    &:hover
+      outline: 3px solid #98B7BA
     &:not(:first-child)
       margin-top: 24px
     &::-moz-placeholder, input::-webkit-input-placeholder

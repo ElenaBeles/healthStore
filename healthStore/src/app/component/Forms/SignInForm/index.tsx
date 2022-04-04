@@ -4,7 +4,7 @@ import {Button} from "../../ui/Button";
 
 import styles from '../index.module.sass';
 
-export const SignInClientForm = (props:any) => {
+export const SignInForm = (props:any) => {
     return (
         <div>
             <Formik
@@ -42,6 +42,7 @@ export const SignInClientForm = (props:any) => {
                             type={"submit"}
                             text={"Войти"}
                             className = { styles.form__btn }
+                            status={"secondary"}
                         />
                     </Form>)}
             </Formik>

@@ -1,6 +1,7 @@
 import {SpecialistModel} from "../models/Specialist.model";
 import {MainStore} from "./MainStore";
 import {action, makeObservable, observable} from "mobx";
+import photoDoctorMock from '../assets/img/photoDoctorMock.jpg';
 
 export class SpecialistStore {
     specialists: Array<SpecialistModel>;
@@ -15,37 +16,44 @@ export class SpecialistStore {
             {
                 id: 1,
                 department: "Гинекология",
-                fullName: "Нигметзянова Альбина Юрьевна"
+                fullName: "Нигметзянова Альбина Юрьевна",
+                img: photoDoctorMock
             },
             {
                 id: 2,
                 department: "Терапевт",
-                fullName: "Анисимова Нина Яковлевна"
+                fullName: "Анисимова Нина Яковлевна",
+                img: photoDoctorMock
             },
             {
                 id: 3,
                 department: "Эндокринология",
-                fullName: "Идиятуллина Эльвира Фанусовна"
+                fullName: "Идиятуллина Эльвира Фанусовна",
+                img: photoDoctorMock
             },
             {
                 id: 4,
                 department: "Кардиология",
-                fullName: "Беляева Наиля Фаляховна"
+                fullName: "Беляева Наиля Фаляховна",
+                img: photoDoctorMock
             },
             {
                 id: 5,
                 department: "Стоматология",
-                fullName: "Ильина Инна Юрьевна"
+                fullName: "Ильина Инна Юрьевна",
+                img: photoDoctorMock
             },
             {
                 id: 6,
                 department: "Стоматология",
-                fullName: "Гранатов Валерий Евгеньевич"
+                fullName: "Гранатов Валерий Евгеньевич",
+                img: photoDoctorMock
             },
             {
                 id: 7,
                 department: "Стоматология",
-                fullName: "Хурматуллина Айгуль Фанузовна"
+                fullName: "Хурматуллина Айгуль Фанузовна",
+                img: photoDoctorMock
             }
         ]
 

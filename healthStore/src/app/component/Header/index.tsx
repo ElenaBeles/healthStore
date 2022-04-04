@@ -19,7 +19,7 @@ export const Header = observer ((props: any) => {
             <div className={ styles.header__info__main }>
                 <div className={ styles.info__main__wrapper }>
                     <div>
-                        <h1>МЕДИЦИНСКИЙ ЦЕНТР</h1>
+                        <h1 className={ styles.title }>МЕДИЦИНСКИЙ ЦЕНТР</h1>
                         <p>ежедневно
                             8:00 - 20:00</p>
                         <p>8(495)741-10-01

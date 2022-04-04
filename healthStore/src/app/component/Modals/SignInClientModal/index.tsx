@@ -2,9 +2,10 @@ import styles from './index.module.sass';
 import {observer} from "mobx-react";
 import {useStores} from "../../../utils/use-stores-hook";
 import {Modal} from "../Modal";
-import {SignInClientForm} from "../../Forms/SignInClientForm";
+import {SignInForm} from "../../Forms/SignInForm";
 import {ButtonLink} from "../../ui/ButtonLink";
 import {SignInDoctorModal} from "../SignInDoctorModal";
+import {SignUpClientModal} from "../SignUpClientModal";
 
 
 export const SignInClientModal = observer(() => {
@@ -15,17 +16,17 @@ export const SignInClientModal = observer(() => {
         setCurrentModal(SignInDoctorModal)
     }
 
-    const openRegiModal = () => {
+    const openRegistrationModal = () => {
         clearCurrentModal()
-        setCurrentModal(SignInDoctorModal)
+        setCurrentModal(SignUpClientModal)
     }
 
     return(
         <Modal title = "Вход для пациента">
-            <SignInClientForm/>
+            <SignInForm/>
             <div className={ styles.links }>
                 <ButtonLink onClick={ openSignInDoctorModal } text={"Вход для врача"}/>
-                <ButtonLink onClick={ openSignInDoctorModal } text={"Регистрация"}/>
+                <ButtonLink onClick={ openRegistrationModal } text={"Регистрация"}/>
             </div>
         </Modal>
     )

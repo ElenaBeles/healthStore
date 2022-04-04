@@ -5,9 +5,6 @@ import {observer} from "mobx-react-lite";
 import {useStores} from "../../../utils/use-stores-hook";
 import {Portal} from "../../Portal";
 import {useModalClose} from "../../../utils/use-modal-close";
-import {ButtonLink} from "../../ui/ButtonLink";
-import {SignInClientModal} from "../SignInClientModal";
-import {SignInDoctorModal} from "../SignInDoctorModal";
 
 export const Modal = observer((props: any) => {
     const { title, children } = props;

@@ -16,6 +16,8 @@ const BasicFormSchema = yup.object().shape({
     password: yup.string()
         .min(3)
         .required("Введите корректный пароль"),
+    date_of_birth: yup.date()
+        .required("Пожалуйста, введите корректную дату рождения")
 })
 
 export default BasicFormSchema;

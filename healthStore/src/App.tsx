@@ -12,6 +12,7 @@ import {Provider} from "mobx-react";
 import {Footer} from "./app/component/Footer";
 import {Home} from "./app/pages/Home";
 import {DoctorsList} from "./app/pages/DoctorsList";
+import {ProfileDoctor} from "./app/pages/Profile/ProfileDoctor";
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
                   <Route path='specialists' caseSensitive element={<DoctorsList />}/>
                   <Route path='make_an_appointment' caseSensitive element={<ChoiceOfSpecialty />}/>
                   <Route path='make_an_appointment/:specialityId/' caseSensitive element={<DoctorSChoice />}/>
+                  <Route path='profile' caseSensitive element={<ProfileDoctor />}/>
+
               </Routes>
           </Provider>
       </BrowserRouter>

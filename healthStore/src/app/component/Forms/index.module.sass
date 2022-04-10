@@ -5,6 +5,11 @@
   &__wrapper
     display: flex
     flex-direction: column
+    overflow-y: auto
+    scrollbar-width: none
+    max-height: 70vh
+    &::-webkit-scrollbar
+      width: 0
   &__field
     border: 1px solid rgba(#EFF0F6, 0.16)
     box-sizing: border-box

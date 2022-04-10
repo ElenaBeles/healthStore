@@ -25,10 +25,12 @@ export const AboutUs = observer(() => {
             <main className={ styles.wrapper }>
                 <article>
                     <Swiper
+
                         modules={[Pagination]}
                         spaceBetween={50}
-                        slidesPerView={1}
+                        slidesPerView='auto'
                         loop = { true }
+                        speed={ 1000 }
                     >
                         <SwiperSlide>
                             <Slide

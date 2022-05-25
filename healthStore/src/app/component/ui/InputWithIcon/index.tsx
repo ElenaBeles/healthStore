@@ -1,27 +1,29 @@
 import React from 'react';
-import { IInputWithIcon } from "./index.interfaces";
+import {IInputWithIcon} from "./index.interfaces";
 import style from './index.module.sass';
 import cn from "classnames/bind";
 import classNames from "classnames/bind";
-import {Icon} from "../Icon"; classNames();
+import {Icon} from "../Icon";
+
+classNames();
 
 const cx = cn.bind(style);
 
-export const InputWithIcon = ( props : IInputWithIcon ) => {
-    const { value, onChange, placeholder, type = 'text', src, status } = props;
+export const InputWithIcon = (props: IInputWithIcon) => {
+    const {value, onChange, placeholder, type = 'text', src, status} = props;
 
-    return(
+    return (
         <div>
-            <div className = { cx( {
+            <div className={cx({
                 wrapper_InputWithImg_active: status === 'active',
                 wrapper_InputWithImg: status !== 'active'
-            })  }>
-                <Icon  name={ src }/>
+            })}>
+                <Icon name={src}/>
                 <input
-                    type = { type }
-                    placeholder = { placeholder }
-                    value = { value }
-                    onChange = { onChange }
+                    type={type}
+                    placeholder={placeholder}
+                    value={value}
+                    onChange={onChange}
                 />
             </div>
         </div>

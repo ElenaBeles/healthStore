@@ -1,16 +1,19 @@
-import {SpecialistStore} from "./SpecialistStore";
 import {SpecialityStore} from "./SpecialityStore";
 import {ModalStore} from "./ModalStore";
+import {UserStore} from "./UserStore";
+import {DoctorStore} from "./DoctorStore";
 
 class MainStore {
-    specialistStore: SpecialistStore;
+    doctorStore: DoctorStore;
     specialityStore: SpecialityStore;
-
+    userStore: UserStore;
     modalStore: ModalStore;
+
     constructor() {
-        this.specialistStore = new SpecialistStore(this);
+        this.doctorStore = new DoctorStore(this);
         this.specialityStore = new SpecialityStore(this);
         this.modalStore = new ModalStore(this);
+        this.userStore = new UserStore(this);
     }
 }
 
@@ -18,4 +21,4 @@ export const mainStore = new MainStore();
 
 export default mainStore;
 
-export { MainStore };
+export {MainStore};

@@ -9,24 +9,14 @@ import {SignUpClientModal} from "../SignUpClientModal";
 
 
 export const SignInClientModal = observer(() => {
-    const { modalStore: { setCurrentModal, clearCurrentModal }} = useStores();
+    const {modalStore: {openModal}} = useStores();
 
-    const openSignInDoctorModal = () => {
-        clearCurrentModal()
-        setCurrentModal(SignInDoctorModal)
-    }
-
-    const openRegistrationModal = () => {
-        clearCurrentModal()
-        setCurrentModal(SignUpClientModal)
-    }
-
-    return(
-        <Modal title = "Вход для пациента">
+    return (
+        <Modal title="Вход для пациента">
             <SignInForm/>
-            <div className={ styles.links }>
-                <ButtonLink onClick={ openSignInDoctorModal } text={"Вход для врача"}/>
-                <ButtonLink onClick={ openRegistrationModal } text={"Регистрация"}/>
+            <div className={styles.links}>
+                <ButtonLink onClick={() => openModal(SignInDoctorModal)} text={"Вход для врача"}/>
+                <ButtonLink onClick={() => openModal(SignUpClientModal)} text={"Регистрация"}/>
             </div>
         </Modal>
     )

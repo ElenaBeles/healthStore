@@ -1,76 +1,85 @@
 import {Field, Form, Formik} from "formik";
-import BasicFormSchema from "../BasicFormSchema";
 import styles from "../index.module.sass";
 import {Button} from "../../ui/Button";
-import {text} from "stream/consumers";
+import {useStores} from "../../../utils/use-stores-hook";
+import {SignInClientModal} from "../../Modals/SignInClientModal";
+import signUpClientSchema from "../Schems/SignUpClientSchema";
+import {useState} from "react";
+import {checkFormValid} from "../CommonActionForm";
 
-export const SignUpForm = (props:any) => {
+export const SignUpForm = (props: any) => {
+    const {userStore: {registration}} = useStores();
+    const {modalStore: {clearCurrentModal, setCurrentModal}} = useStores();
+    const [isValidForm, setIsValidForm] = useState(false);
+
     const points = [
-        { name: "last_name", type: "text", placeholder: "Иванов" },
-        { name: "first_name", type: "text", placeholder: "Иван" },
-        { name: "middle_name", type: "text", placeholder: "Иванович" },
-        { name: "email", type: "email", placeholder: "ivanov@mail.com" },
-        { name: "password", type: "password", placeholder: 'password' }
+        {name: "firstName", type: "text", placeholder: "Имя"},
+        {name: "lastName", type: "text", placeholder: "Фамилия"},
+        {name: "middleName", type: "text", placeholder: "Отчество"},
+        {name: "phone", type: "text", placeholder: "Телефон"},
+        {name: "address", type: "text", placeholder: "Адрес"},
+        {name: "passportNumber", type: "text", placeholder: "Паспорт"},
+        {name: "policyNumber", type: "text", placeholder: "Полис"},
+        {name: "bloodType", type: "text", placeholder: "Группа крови(пр: 2+)"},
+        {name: "email", type: "email", placeholder: "Email"},
+        {name: "password", type: "password", placeholder: 'Password'}
     ]
+
+    const signUp = (value: any) => {
+        registration({
+            firstName: value.firstName,
+            lastName: value.lastName,
+            middleName: value.middleName,
+            birthday: "2019-11-21T11:01:32.610Z",
+            phone: value.phone,
+            address: value.address,
+            passportNumber: value.passportNumber,
+            policyNumber: value.policyNumber,
+            bloodType: value.bloodType,
+            email: value.email,
+            password: value.password,
+        }).then(val => {
+            clearCurrentModal()
+            setCurrentModal(SignInClientModal)
+        })
+    }
+
     return (
-        <div className = { styles.form }>
+        <div className={styles.form}>
             <Formik
-                initialValues = {{
-                    first_name: '',
-                    last_name: '',
-                    middle_name: '',
+                initialValues={{
+                    firstName: '',
+                    lastName: '',
+                    middleName: '',
+                    phone: '',
+                    address: '',
+                    passportNumber: '',
+                    policyNumber: '',
+                    bloodType: '',
                     email: '',
                     password: '',
-                    date_of_birth: '',
-                    phone: '',
-                    polis_number: '',
-                    passport_number: ''
                 }}
-                validationSchema={ BasicFormSchema }
-                onSubmit = {
-                    (values: any) => console.log(values)
+                validationSchema={signUpClientSchema}
+                onSubmit={
+                    (values: any) => signUp(values)
                 }
-               >
+            >
                 {({errors, touched}) => (
-                    <Form className = { styles.form__wrapper }>
-                        { points.map((item, index) => (
+                    <Form className={styles.form__wrapper} onChange={() => checkFormValid(errors, setIsValidForm)}>
+                        {points.map((item, index) => (
                             <Field
-                                name = { item.name }
-                                type = { item.type }
-                                placeholder = { item.placeholder ?  item.placeholder: '' }
-                                className = { styles.form__field }
+                                name={item.name}
+                                type={item.type}
+                                placeholder={item.placeholder ? item.placeholder : ''}
+                                className={styles.form__field}
                             />
                         ))
                         }
-                        <Field
-                            name = { "Группа крови" }
-                            type = { 'text' }
-                            placeholder = { "Группа крови" }
-                            className = { styles.form__field }
-                        />
-                        <Field
-                            name = { "Резус фактор" }
-                            type = { 'text' }
-                            placeholder = { "Резус фактор" }
-                            className = { styles.form__field }
-                        />
-                        <Field
-                            name = { "polis_number" }
-                            type = { 'text' }
-                            placeholder = { "Номер полиса" }
-                            className = { styles.form__field }
-                        />
-                        <Field
-                            name = { "passport_number" }
-                            type = { 'text' }
-                            placeholder = { "Номер паспорта" }
-                            className = { styles.form__field }
-                        />
                         <Button
                             type={"submit"}
                             text={"Зарегистрироваться"}
-                            className = { styles.form__btn }
-                            status={ "secondary" }
+                            className={styles.form__btn}
+                            status={"secondary"}
                         />
                     </Form>)}
             </Formik>

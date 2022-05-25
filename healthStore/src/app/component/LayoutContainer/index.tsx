@@ -4,22 +4,22 @@ import {Header} from "../Header";
 import {Footer} from "../Footer";
 
 export const LayoutContainer = (props: any) => {
-    const { children } = props;
+    const {children} = props;
 
-    return(
+    return (
         <>
             <Header/>
-            <div className = { styles.container }>
-                <div className = { styles.navigation__wrapper }>
-                    <nav className = { styles.navigation }>
-                        <Link className = { styles.navigation__link } to={"/about_us"}>О нас</Link>
-                        <Link className = { styles.navigation__link } to={"/recommendations"}>Рекомандации</Link>
-                        <Link className = { styles.navigation__link } to={"/reviews"}>Отзывы</Link>
+            <div className={styles.container}>
+                <div className={styles.navigation__wrapper}>
+                    <nav className={styles.navigation}>
+                        <Link className={styles.navigation__link} to={"/profile"}>Профиль</Link>
+                        <Link className={styles.navigation__link} to={"/recommendations"}>Рекомендации</Link>
+                        <Link className={styles.navigation__link} to={'/'}>ВОЗ</Link>
                     </nav>
                 </div>
-                <div  className = { styles.main__wrapper }>
+                <div className={styles.main__wrapper}>
                     <main>
-                        { children }
+                        {children}
                     </main>
                 </div>
             </div>

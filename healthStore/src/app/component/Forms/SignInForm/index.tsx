@@ -1,48 +1,71 @@
-import {Form, Formik, Field} from 'formik';
-import BasicFormSchema from "../BasicFormSchema";
+import {Field, Form, Formik} from 'formik';
 import {Button} from "../../ui/Button";
 
 import styles from '../index.module.sass';
+import {useStores} from "../../../utils/use-stores-hook";
+import {useNavigate} from "react-router-dom";
+import SignInSchema from "../Schems/SignInSchema";
+import {useState} from "react";
 
-export const SignInForm = (props:any) => {
+
+export const SignInForm = (props: any) => {
+    const {modalStore: {clearCurrentModal}} = useStores();
+    const {userStore: {authorization, getUserId}} = useStores();
+    const [isValidForm, setIsValidForm] = useState(false);
+
+    const navigate = useNavigate()
+
+    const login = (value: any) => {
+        authorization({
+            email: value.email,
+            password: value.password
+        }).then(
+            value => {
+                getUserId().then(
+                    userId => {
+                        navigate("/profile-patient/" + userId,)
+                        clearCurrentModal()
+                    }
+                )
+            })
+    }
+
+    const checkFormValid = (err: any) => {
+        setIsValidForm(Object.keys(err).length === 0)
+    }
+
     return (
         <div>
             <Formik
-                initialValues = {{
+                initialValues={{
                     email: '',
                     password: '',
                 }}
-                validationSchema={ BasicFormSchema }
-                onSubmit = {
-                    (values: any) => console.log(values)
-                }>
+                validationSchema={SignInSchema}
+                onSubmit={
+                    (values: any) => login(values)
+                }
+            >
                 {({errors, touched}) => (
-                    <Form className = { styles.form__wrapper }>
+                    <Form className={styles.form__wrapper} onChange={() => checkFormValid(errors)}>
                         <Field
-                            name = "email"
-                            type = "email"
-                            placeholder = "Email"
-                            className = { styles.form__field }
+                            name="email"
+                            type="email"
+                            placeholder="Email"
+                            className={styles.form__field}
                         />
-                        { errors.email &&
-                        touched.email && <p className={ styles.error }>
-                            { errors.email }
-                        </p>}
                         <Field
-                            name = "password"
-                            type = "password"
-                            placeholder = "Пароль"
-                            className = { styles.form__field }
+                            name="password"
+                            type="password"
+                            placeholder="Пароль"
+                            className={styles.form__field}
                         />
-                        { errors.password &&
-                        touched.password && <p className={ styles.error }>
-                            { errors.password }
-                        </p>}
+
                         <Button
                             type={"submit"}
                             text={"Войти"}
-                            className = { styles.form__btn }
-                            status={"secondary"}
+                            className={styles.form__btn}
+                            status={isValidForm ? "secondary" : "primary"}
                         />
                     </Form>)}
             </Formik>

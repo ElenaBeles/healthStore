@@ -1,0 +1,35 @@
+@import "../../../styles/mixins"
+
+.form
+  &__wrapper
+    width: 100%
+    padding: 40px
+
+    border: 10px solid $c-blue
+    border-radius: 49px
+
+  &__title
+    color: $c-black
+    font-weight: 700
+    @include text-25
+
+  &__subtitle
+    color: $c-main
+    max-width: 100%
+    @include text-14
+    margin-top: 40px
+
+.step
+  margin-top: 40px
+  padding: 10px
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  row-gap: 40px
+  column-gap: 10px
+
+  & > div
+    flex: 50%
+
+.btn
+  margin-top: 40px

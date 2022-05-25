@@ -3,6 +3,7 @@ import {makeAutoObservable} from "mobx";
 
 export class ModalStore {
     currentModal = null;
+
     constructor(public mainStore: MainStore) {
         this.currentModal = null;
 
@@ -15,5 +16,9 @@ export class ModalStore {
 
     setCurrentModal = (modal: any) => {
         this.currentModal = modal;
+    }
+
+    openModal = (nameModal: () => JSX.Element) => {
+        this.setCurrentModal(nameModal)
     }
 }

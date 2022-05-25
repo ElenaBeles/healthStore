@@ -1,9 +1,8 @@
 @import "/src/app/styles/mixins"
 
-
 .wrapper
   max-width: 936px
-  margin: 0 auto
+  margin: 40px auto
 
 .slide
   &__img
@@ -14,17 +13,35 @@
   &__item
     &:not(:first-child)
       margin-left: 50px
+
   &__wrapper
     display: flex
     flex-direction: row
     justify-content: space-between
+
   &__title
     @include text-25
+
   &__email
     color: $c-blue
+
   &__subtitle
-    font-size: 15px
-    font-weight: 600
+    @include text-15
     margin-top: 30px
+
   &__info
     margin-top: 40px
+
+
+@media only screen and (max-width: 767px)
+  .contacts
+    &__wrapper
+      flex-direction: column
+      row-gap: 50px
+
+    &__item
+      &:not(:first-child)
+        margin-left: 0
+
+
+

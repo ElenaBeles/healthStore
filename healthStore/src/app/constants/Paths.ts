@@ -1,0 +1,1 @@
+export const appointmentPath = 'make-an-appointment/'

@@ -7,7 +7,7 @@ import {LinkChoice} from "../../component/ui/CustomLink/LinkСhoice";
 import {Button} from "../../component/ui/Button";
 
 export const Specialists = observer(() => {
-    const { specialistStore: { specialists } } = useStores();
+    const {doctorStore: {specialists}} = useStores();
 
     const navigate = useNavigate();
     const goBack = () => {
@@ -15,16 +15,16 @@ export const Specialists = observer(() => {
     }
     return (
         <LayoutContainer>
-            <main className={ styles.wrapper }>
-                <h1 className = { styles.title }>Выберите специалиста</h1>
-                <div className={ styles.list__wrapper }>
-                    { specialists.map((item, index) => (
+            <main className={styles.wrapper}>
+                <h1 className={styles.title}>Выберите специалиста</h1>
+                <div className={styles.list__wrapper}>
+                    {specialists.map((item, index) => (
                         <LinkChoice to={`/`} children={item.fullName}/>
                     ))
                     }
                 </div>
                 <Button
-                    onClick={ goBack }
+                    onClick={goBack}
                     text={"Вернутся к выбору специальности"}
                     type={"button"}/>
             </main>

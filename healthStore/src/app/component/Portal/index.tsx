@@ -7,7 +7,7 @@ export const Portal = (props: IPortal) => {
     const [container] = useState(document.createElement(el));
 
     container.classList.add(className);
-    if(role) container.setAttribute('role', role);
+    if (role) container.setAttribute('role', role);
     useEffect(() => {
         document.body.appendChild(container);
         return () => {

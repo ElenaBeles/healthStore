@@ -1,0 +1,26 @@
+@import "./src/app/styles/mixins"
+
+.swiper
+  &__wrapper
+    margin: 0 auto
+    width: 100%
+
+.wrapper
+  display: flex
+  row-gap: 70px
+  flex-direction: column
+  justify-content: center
+
+
+.reviews
+  display: flex
+  flex-direction: column
+  row-gap: 50px
+  margin: 40px 0
+
+  &__wrapper
+    margin: 40px auto
+
+  &__title
+    @include text-25
+    color: $c-orange

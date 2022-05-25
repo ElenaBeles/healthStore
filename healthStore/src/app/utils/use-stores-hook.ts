@@ -1,5 +1,5 @@
-import React, {useContext} from "react";
-import mainStore, {MainStore} from "../stores/MainStore";
+import {useContext} from "react";
+import {MainStore} from "../stores/MainStore";
 import {MobXProviderContext} from "mobx-react";
 
 export const useStores = (): MainStore => {

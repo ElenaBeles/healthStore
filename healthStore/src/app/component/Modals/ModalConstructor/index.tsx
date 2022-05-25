@@ -4,9 +4,9 @@ import {cloneElement} from "react";
 
 
 export const ModalConstructor = observer(() => {
-    const { modalStore: { currentModal: CurrentModal } } = useStores();
+    const {modalStore: {currentModal: CurrentModal}} = useStores();
 
-    if(CurrentModal) {
+    if (CurrentModal) {
         // @ts-ignore
         return cloneElement(<CurrentModal/>)
     } else {

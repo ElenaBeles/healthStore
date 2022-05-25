@@ -1,38 +1,37 @@
 import {MainStore} from "./MainStore";
-import {action, makeObservable, observable} from "mobx";
-import {SpecialityModel} from "../models/SpecialityModel";
+import {action, makeObservable} from "mobx";
+import axios from "axios";
+
+interface IDepartment {
+    title: string,
+    titleRU: string,
+}
 
 export class SpecialityStore {
-    speciality: Array<SpecialityModel>;
-
-    constructor(public mainStore : MainStore) {
+    constructor(public mainStore: MainStore) {
         makeObservable(this, {
-            speciality: observable,
-            addSpecialist: action,
+            getDepartments: action,
+            getTitleRuFromDepartmentsList: action
         })
-
-        this.speciality = [
-            {
-                id: 1,
-                title: "Стоматология"
-            },
-            {
-                id: 2,
-                title: "Хирургия"
-            },
-            {
-                id: 3,
-                title: "Гинекология"
-            },
-            {
-                id: 4,
-                title: "Терапевтия"
-            },
-        ]
-
     }
 
-    addSpecialist = (speciality: SpecialityModel) => {
-        this.speciality.push(speciality);
+    getDepartments(): Promise<Map<string, string>> {
+        let departments: Map<string, string> = new Map<string, string>();
+        return axios.get("appointment/departments ").then(value => {
+            value.data.map((val: any) => {
+                departments.set(val.title, val.titleRu)
+            })
+            return departments
+        })
+    }
+
+    getTitleRuFromDepartmentsList(title: string) {
+        let departments: Map<string, string> = new Map<string, string>();
+        return axios.get("appointment/departments ").then(value => {
+            value.data.map((val: any) => {
+                departments.set(val.title, val.titleRu)
+            })
+            return departments.get(title)
+        })
     }
 }

@@ -4,22 +4,21 @@ import {IButtonWithIcon} from "./index.interfaces";
 import cn from "classnames/bind";
 import {Icon} from "../../Icon";
 import React from "react";
-import {Button} from "../index";
 
 const cx = cn.bind(styles);
 
 export const ButtonWithIcon = (props: IButtonWithIcon) => {
-    const { text, onClick, className, type, src } = props;
+    const {text, onClick, className, type, src} = props;
 
-    return(
-        <div className={ styles.wrapper }>
+    return (
+        <div className={styles.wrapper}>
             <button
-                className = { cx( className, styles.button__wrapper) }
-                onClick = { onClick }
-                type = { type }
+                className={cx(className, styles.button__wrapper)}
+                onClick={onClick}
+                type={type}
             >
-                <Icon className={ styles.button__icon } name={ src } size={ "24" }/>
-                { text }
+                <Icon className={styles.button__icon} name={src} size={"24"}/>
+                {text}
             </button>
         </div>
 

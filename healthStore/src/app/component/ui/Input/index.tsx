@@ -5,17 +5,17 @@ import cn from "classnames/bind";
 
 const cx = cn.bind(styles);
 
-export const Input = ( props : IInput ) => {
-    const { value, onChange, placeholder, type = 'text',  className, isError } = props;
+export const Input = (props: IInput) => {
+    const {value, onChange, placeholder, type = 'text', className, isError} = props;
 
-    return(
+    return (
         <input
-            type = { type }
-            placeholder = { placeholder }
-            value = { value }
-            onChange = { onChange }
-            className={cx(styles.input, className,{
-                    inputError: isError
+            type={type}
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+            className={cx(styles.input, className, {
+                    "input--error": isError
                 }
             )}
         />

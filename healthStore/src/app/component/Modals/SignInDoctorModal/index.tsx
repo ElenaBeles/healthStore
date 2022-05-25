@@ -2,24 +2,22 @@ import styles from '../SignInClientModal/index.module.sass';
 import {observer} from "mobx-react";
 import {useStores} from "../../../utils/use-stores-hook";
 import {Modal} from "../Modal";
-import {SignInForm} from "../../Forms/SignInForm";
 import {ButtonLink} from "../../ui/ButtonLink";
 import {SignInClientModal} from "../SignInClientModal";
+import {SignUpDoctorModal} from "../SignUpDoctorModal";
+import React from "react";
+import {SignInDoctorForm} from "../../Forms/SignInDoctorForm";
 
 
 export const SignInDoctorModal = observer(() => {
-    const { modalStore: { setCurrentModal, clearCurrentModal }} = useStores();
+    const {modalStore: {openModal}} = useStores();
 
-    const openSignClientModal = () => {
-        clearCurrentModal()
-        setCurrentModal(SignInClientModal)
-    }
-
-    return(
-        <Modal title = "Вход для доктора">
-            <SignInForm/>
-            <div className={ styles.links }>
-                <ButtonLink onClick={ openSignClientModal } text={"Вход для пациента"}/>
+    return (
+        <Modal title="Вход для доктора">
+            <SignInDoctorForm/>
+            <div className={styles.links}>
+                <ButtonLink onClick={() => openModal(SignUpDoctorModal)} text={"Регистрация доктора"}/>
+                <ButtonLink onClick={() => openModal(SignInClientModal)} text={"Вход для пациента"}/>
             </div>
         </Modal>
     )

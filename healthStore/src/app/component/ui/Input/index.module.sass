@@ -1,10 +1,14 @@
+@import "/src/app/styles/mixins"
+
 .input
   outline: none
   border-radius: 8px
-  border: 1px solid rgba(#000B2628, 0.16)
-  &Error
-    border: 2px solid #FF4545
+  border: 1px solid rgba($c-black, 0.16)
+
+  &--error
+    border: 2px solid $c-red
     border-radius: 8px
+
   ::placeholder, ::-ms-input-placeholder
-    color: #000B2666
+    color: $c-black
     opacity: 16%

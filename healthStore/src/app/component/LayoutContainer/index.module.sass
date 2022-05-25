@@ -13,21 +13,23 @@ main
   min-height: 100vh
   flex-grow: 1
   max-width: 1170px
-  min-width: 732px
   width: 73vw
 
   margin: 0 auto
 
 .navigation
   width: 100%
+  min-width: 130px
   margin: 40px auto
   display: flex
   flex-direction: column
+
   &__wrapper
     background-color: $c-gray
     max-width: 238px
     min-width: 114px
     width: 14.8vw
+
   &__link
     padding: 0 20px
     text-decoration: none
@@ -36,9 +38,18 @@ main
 
     height: 35px
     @include text-12
+
     &:hover
       color: black
 
 .main
   &__wrapper
     width: 100%
+
+
+@media only screen and (max-width: 860px)
+  .navigation
+    &__wrapper
+      display: none
+
+

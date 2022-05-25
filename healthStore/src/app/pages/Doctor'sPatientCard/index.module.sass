@@ -1,0 +1,45 @@
+@import "/src/app/styles/mixins"
+
+.title
+  color: $c-main
+  @include text-33
+  margin-top: 40px
+
+.patient
+  &__info
+    margin-top: 100px
+    display: flex
+    flex-direction: column
+    @include text-25
+    color: $c-main
+    row-gap: 40px
+
+.info
+  &__edit
+    margin-top: 150px
+    display: flex
+    flex-direction: column
+    row-gap: 100px
+
+.block__wrapper
+  display: flex
+  flex-direction: column
+  row-gap: 40px
+
+.separator
+  max-width: 500px
+  height: 3px
+  width: 30vw
+  color: $c-orange
+  background-color: $c-orange
+
+.textarea
+  resize: none
+  border: 3px solid $c-blue
+  outline: none
+  height: 200px
+  padding: 15px
+  @include text-20
+
+.btn
+  margin: 100px 0

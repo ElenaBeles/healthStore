@@ -1,11 +1,11 @@
-import { useEffect } from "react";
+import {useEffect} from "react";
 
 export const useModalClose = (ref: any, handler: Function) => {
     useEffect(() => {
         const reference = ref.current;
 
         const listener = (event: any) => {
-            if(reference === event.target) handler();
+            if (reference === event.target) handler();
         };
 
         reference?.addEventListener('mousedown', listener);

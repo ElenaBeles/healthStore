@@ -30,11 +30,9 @@ export const DoctorChoice = observer((props: any) => {
     return (
         <>
             <div className={styles.list__wrapper}>
-                <div className={styles.list__wrapper}>
-                    {doctors.map((item, index) => (
-                        <LinkChoice to={`${navigate.pathname}/${item[0]}`} key={index} children={item[1]}/>
-                    ))}
-                </div>
+                {doctors.map((item, index) => (
+                    <LinkChoice to={`${navigate.pathname}/${item[0]}`} key={index} children={item[1]}/>
+                ))}
             </div>
         </>
     )

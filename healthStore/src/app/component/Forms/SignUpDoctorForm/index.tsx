@@ -6,21 +6,22 @@ import signUpDoctorSchema from "../Schems/SignUpDoctorSchema";
 import {useState} from "react";
 import {checkFormValid} from "../CommonActionForm";
 
-export const SignUpDoctorForm = (props: any) => {
+const points = [
+    {name: "firstName", type: "text", placeholder: "Имя"},
+    {name: "lastName", type: "text", placeholder: "Фамилия"},
+    {name: "middleName", type: "text", placeholder: "Отчество"},
+    {name: "phone", type: "text", placeholder: "Телефон"},
+    {name: "address", type: "text", placeholder: "Адрес"},
+    {name: "email", type: "email", placeholder: "Email"},
+    {name: "password", type: "password", placeholder: 'Password'},
+    {name: "numberRoom", type: "number", placeholder: 'Номер кабинета'},
+    {name: "hospital", type: "text", placeholder: 'Больница'}
+]
+
+export const SignUpDoctorForm = () => {
     const {doctorStore: {registrationDoctor}} = useStores();
     const {modalStore: {clearCurrentModal}} = useStores();
     const [isValidForm, setIsValidForm] = useState(false);
-
-    const points = [
-        {name: "firstName", type: "text", placeholder: "Имя"},
-        {name: "lastName", type: "text", placeholder: "Фамилия"},
-        {name: "middleName", type: "text", placeholder: "Отчество"},
-        {name: "phone", type: "text", placeholder: "Телефон"},
-        {name: "address", type: "text", placeholder: "Адрес"},
-        {name: "email", type: "email", placeholder: "Email"},
-        {name: "password", type: "password", placeholder: 'Password'},
-        {name: "numberRoom", type: "number", placeholder: 'Номер кабинета'}
-    ]
 
     const signUpDoctor = (value: any) => {
         registrationDoctor({
@@ -32,7 +33,8 @@ export const SignUpDoctorForm = (props: any) => {
             department: "CARDIOLOGY",
             email: value.email,
             password: value.password,
-            numberRoom: value.numberRoom
+            numberRoom: value.numberRoom,
+            hospital: value.hospital
         })
         clearCurrentModal()
     }
@@ -49,6 +51,7 @@ export const SignUpDoctorForm = (props: any) => {
                     email: '',
                     password: '',
                     numberRoom: 0,
+                    hospital: ''
                 }}
                 validationSchema={signUpDoctorSchema}
                 onSubmit={

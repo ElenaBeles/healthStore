@@ -8,7 +8,6 @@ import {appointmentPath} from "../../../constants/Paths";
 
 export const SpecialityChoice = observer((props: any) => {
     const [deps, setDeps] = useState<Array<any>>()
-
     const {specialityStore: {getDepartments}} = useStores()
 
     useEffect(() => {

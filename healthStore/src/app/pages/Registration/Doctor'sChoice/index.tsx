@@ -8,7 +8,6 @@ import {useEffect} from "react";
 import {DoctorChoice} from "../../../component/Choise/Doctor";
 
 export const DoctorSChoice = observer(() => {
-    const {doctorStore: {specialists}} = useStores();
     const isAuth = localStorage.getItem('token')
 
     const navigate = useNavigate();

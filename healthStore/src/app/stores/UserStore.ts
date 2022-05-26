@@ -1,13 +1,24 @@
 import {MainStore} from "./MainStore";
-import {makeAutoObservable} from "mobx";
+import {action, makeAutoObservable, observable} from "mobx";
 import axios from "axios";
 import authorizationInterceptor from "./interceptors/AuthorizationInterceptor";
 import {UserModel} from "../models/UserModel";
 
 export class UserStore {
+    isAuth: string | null = localStorage.getItem('token') ? localStorage.getItem('token') : null
 
     constructor(public mainStore: MainStore) {
-        makeAutoObservable(this)
+        makeAutoObservable(this,
+            {
+                isAuth: observable,
+                authorization: action,
+                registration: action,
+                logOut: action,
+                getUserId: action,
+                getProfile: action,
+                updateProfile: action
+            }
+        )
     }
 
     authorization(user: UserModel) {
@@ -17,20 +28,6 @@ export class UserStore {
                 window.localStorage.setItem("token", token)
             })
     }
-
-    refreshToken(user: UserModel) {
-        authorizationInterceptor()
-        return axios.post("token/refresh", {
-            "accessToken": localStorage.getItem('token'),
-            //"refreshToken": "e70af8c4-a485-40a9-b45a-25b9bdbcff0f"
-        })
-            .then((res: any) => {
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-    }
-
 
     registration(user: any) {
         authorizationInterceptor()
@@ -46,7 +43,6 @@ export class UserStore {
                 console.log(err);
             })
     }
-
 
     getUserId(): Promise<number> {
         return axios.get("token/user-info", {

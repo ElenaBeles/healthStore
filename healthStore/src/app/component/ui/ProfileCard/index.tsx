@@ -2,17 +2,13 @@ import {FC} from "react";
 import {IProfileCard} from "./index.interfaces";
 import styles from './index.module.sass';
 
-import cn from "classnames/bind";
-
-const cx = cn.bind(styles);
-
 export const ProfileCard: FC<IProfileCard> = (props: IProfileCard) => {
     const {firstName, lastName, middleName, img, profile, seniority, date_of_birth, blood_type} = props;
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.info}>
-                <div className={styles.info__about__person}>
+                <div className={styles.info_about_person}>
                     <h1>{firstName} {lastName} {middleName}</h1>
 
                     {profile && <h2>Специализация: {profile}</h2>}

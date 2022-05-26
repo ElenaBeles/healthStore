@@ -6,13 +6,13 @@ import {useStores} from "../../../utils/use-stores-hook";
 import {useNavigate} from "react-router-dom";
 import SignInSchema from "../Schems/SignInSchema";
 import {useState} from "react";
+import {checkFormValid} from "../CommonActionForm";
 
 
-export const SignInForm = (props: any) => {
+export const SignInForm = () => {
     const {modalStore: {clearCurrentModal}} = useStores();
     const {userStore: {authorization, getUserId}} = useStores();
     const [isValidForm, setIsValidForm] = useState(false);
-
     const navigate = useNavigate()
 
     const login = (value: any) => {
@@ -30,10 +30,6 @@ export const SignInForm = (props: any) => {
             })
     }
 
-    const checkFormValid = (err: any) => {
-        setIsValidForm(Object.keys(err).length === 0)
-    }
-
     return (
         <div>
             <Formik
@@ -47,7 +43,7 @@ export const SignInForm = (props: any) => {
                 }
             >
                 {({errors, touched}) => (
-                    <Form className={styles.form__wrapper} onChange={() => checkFormValid(errors)}>
+                    <Form className={styles.form__wrapper} onChange={() => checkFormValid(errors, setIsValidForm)}>
                         <Field
                             name="email"
                             type="email"

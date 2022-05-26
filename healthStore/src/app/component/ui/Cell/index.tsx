@@ -1,13 +1,8 @@
 import styles from "./index.module.sass";
 import {FC} from "react";
+import {ICell} from "./index.interfaces";
 
-
-interface CellInfo {
-    userName: string;
-    time: string
-}
-
-export const Cell: FC<CellInfo> = (props: CellInfo) => {
+export const Cell: FC<ICell> = (props: ICell) => {
     const {userName, time} = props;
     return (
         <div className={styles.info}>

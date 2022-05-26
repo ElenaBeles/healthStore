@@ -1,0 +1,19 @@
+@mixin exclude-mobile
+  @media (min-width: 479px)
+    @content
+
+@mixin mobile
+  @media (max-width: 479px)
+    @content
+
+@mixin mini-tablet
+  @media (max-width: 900px)
+    @content
+
+@mixin exclude-tablet
+  @media (min-width: 1000px)
+    @content
+
+@mixin tablet
+  @media (max-width: 1000px)
+    @content

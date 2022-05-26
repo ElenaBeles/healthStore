@@ -1,6 +1,10 @@
 @import "./src/app/styles/mixins"
 
 .header
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+
   &__wrapper
     display: flex
     flex-direction: column
@@ -23,7 +27,7 @@
   &:not(:first-child)
     margin-left: 38px
 
-.info__main
+.info_main
   &__wrapper
     margin: 0 auto
     max-width: 1200px
@@ -36,7 +40,7 @@
       flex-direction: column
       row-gap: 20px
 
-  &__btn
+  &_btn
     &:not(:first-child)
       margin-top: 10px
 

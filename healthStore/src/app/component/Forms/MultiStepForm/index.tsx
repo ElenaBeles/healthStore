@@ -1,4 +1,3 @@
-import {Form, Formik, FormikConfig, FormikValues} from 'formik';
 import React, {useState} from "react";
 import * as yup from "yup";
 import styles from './index.module.sass';
@@ -12,17 +11,19 @@ import phone from '../../../assets/img/phone.svg';
 import intership from '../../../assets/img/intership.png';
 import medicine from '../../../assets/img/medicine.png';
 import vaccine from '../../../assets/img/vaccine.png';
-
+import {FormikStepProps} from "./FormikStep/index.interfaces";
+import {FormikStep} from "./FormikStep";
+import { MultiStepFormStepper } from './MultiStepFormStepper';
 
 export const MultiStepForm = () => {
-
     return (
         <div className={styles.form__wrapper}>
             <MultiStepFormStepper
                 initialValues={{
                     email: '',
                     password: '',
-                    name: ''
+                    name: '',
+                    field: ''
                 }}
                 onSubmit={
                     (values: any) => console.log(values)
@@ -68,53 +69,3 @@ export const MultiStepForm = () => {
     )
 }
 
-
-export interface FormikStepProps
-    extends Pick<FormikConfig<FormikValues>, 'children' | 'validationSchema'> {
-}
-
-export function FormikStep({children}: FormikStepProps) {
-    return <div>{children}</div>;
-}
-
-export const MultiStepFormStepper = ({children, ...props}: FormikConfig<FormikValues>) => {
-    const childrenArray = React.Children.toArray(children) as React.ReactElement<FormikStepProps>[];
-    const [step, setStep] = useState(0);
-    const currentChild = childrenArray[step];
-
-    const isLastStep = (step: number) => {
-        return step === childrenArray.length - 1
-    }
-
-
-    return (
-        <Formik
-            {...props}
-            validationSchema={currentChild.props.validationSchema}
-            onSubmit={async (values, helpers) => {
-                if (isLastStep(step)) {
-                    values = await props.onSubmit(values, helpers)
-                    console.log(values)
-                } else {
-                    setStep(step => step + 1)
-                }
-            }}>
-            <Form autoComplete={'off'}>
-                {currentChild}
-
-                {step > 2 ?
-                    <ButtonMS
-                        className={styles.btn}
-                        type={'button'}
-                        onClick={() => setStep(step - 1)}
-                        title={'Отправить'}/>
-                    :
-                    <ButtonMS
-                        className={styles.btn}
-                        type={'submit'}
-                        title={isLastStep(step) ? 'Отправить форму' : 'Следующий шаг'}/>
-                }
-            </Form>
-        </Formik>
-    )
-}

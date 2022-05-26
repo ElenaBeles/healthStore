@@ -14,7 +14,6 @@ export const LinkChoice = (props: IChoiceLink) => {
     let resolved = useResolvedPath(to);
     let match = useMatch({path: resolved.pathname, end: true});
 
-
     return (
         <Link
             to={`${to}`}

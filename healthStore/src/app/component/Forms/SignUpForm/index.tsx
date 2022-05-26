@@ -7,23 +7,23 @@ import signUpClientSchema from "../Schems/SignUpClientSchema";
 import {useState} from "react";
 import {checkFormValid} from "../CommonActionForm";
 
+const points = [
+    {name: "firstName", type: "text", placeholder: "Имя"},
+    {name: "lastName", type: "text", placeholder: "Фамилия"},
+    {name: "middleName", type: "text", placeholder: "Отчество"},
+    {name: "phone", type: "text", placeholder: "Телефон"},
+    {name: "address", type: "text", placeholder: "Адрес"},
+    {name: "passportNumber", type: "text", placeholder: "Паспорт"},
+    {name: "policyNumber", type: "text", placeholder: "Полис"},
+    {name: "bloodType", type: "text", placeholder: "Группа крови(пр: 2+)"},
+    {name: "email", type: "email", placeholder: "Email"},
+    {name: "password", type: "password", placeholder: 'Password'}
+]
+
 export const SignUpForm = (props: any) => {
     const {userStore: {registration}} = useStores();
     const {modalStore: {clearCurrentModal, setCurrentModal}} = useStores();
     const [isValidForm, setIsValidForm] = useState(false);
-
-    const points = [
-        {name: "firstName", type: "text", placeholder: "Имя"},
-        {name: "lastName", type: "text", placeholder: "Фамилия"},
-        {name: "middleName", type: "text", placeholder: "Отчество"},
-        {name: "phone", type: "text", placeholder: "Телефон"},
-        {name: "address", type: "text", placeholder: "Адрес"},
-        {name: "passportNumber", type: "text", placeholder: "Паспорт"},
-        {name: "policyNumber", type: "text", placeholder: "Полис"},
-        {name: "bloodType", type: "text", placeholder: "Группа крови(пр: 2+)"},
-        {name: "email", type: "email", placeholder: "Email"},
-        {name: "password", type: "password", placeholder: 'Password'}
-    ]
 
     const signUp = (value: any) => {
         registration({
@@ -79,7 +79,7 @@ export const SignUpForm = (props: any) => {
                             type={"submit"}
                             text={"Зарегистрироваться"}
                             className={styles.form__btn}
-                            status={"secondary"}
+                            status={isValidForm ? "secondary" : "primary"}
                         />
                     </Form>)}
             </Formik>

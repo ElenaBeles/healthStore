@@ -9,20 +9,23 @@ import {useLocation} from "react-router-dom";
 export const DoctorChoice = observer((props: any) => {
     const {doctorStore: {getDoctorsFromDepartment}} = useStores();
     const navigate = useLocation()
-    const dep = navigate.pathname.split('/').slice(-1);
+    const department = navigate.pathname.split('/').slice(-1);
     const specialists = new Map<any, string>()
     const [doctors, setDoctors] = useState<Array<any>>([]);
 
     useEffect(() => {
-        getDoctorsFromDepartment(dep.toString()).then(val => {
+        getDoctorsFromDepartment(department.toString()).then(val => {
             val.data.map((val: any, index: any) => {
-                let fullName = val.lastName + " " + val.firstName + " " + val.middleName
-                specialists.set(index, fullName)
+                const doctorName = createFullName(val.firstName, val.lastName, val.middleName)
+                specialists.set(index, doctorName)
             })
             setDoctors(Array.from(specialists))
         })
     }, [])
 
+    const createFullName = (firstName: string, lastName: string, middleName: string): string => {
+        return lastName + " " + firstName + " " + middleName
+    }
 
     return (
         <>

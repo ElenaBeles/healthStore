@@ -5,24 +5,26 @@ import {LayoutContainer} from "../../component/LayoutContainer";
 import styles from "../Registration/Doctor'sChoice/index.module.sass";
 import {LinkChoice} from "../../component/ui/CustomLink/LinkСhoice";
 import {Button} from "../../component/ui/Button";
+import {useEffect} from "react";
 
 export const Specialists = observer(() => {
-    const {doctorStore: {specialists}} = useStores();
+    const {doctorStore: {getDoctorsList}} = useStores();
 
     const navigate = useNavigate();
     const goBack = () => {
         navigate(-1)
     }
+
     return (
         <LayoutContainer>
             <main className={styles.wrapper}>
                 <h1 className={styles.title}>Выберите специалиста</h1>
-                <div className={styles.list__wrapper}>
+                {/*<div className={styles.list__wrapper}>
                     {specialists.map((item, index) => (
                         <LinkChoice to={`/`} children={item.fullName}/>
                     ))
-                    }
-                </div>
+                */}
+                {/*</div>*/}
                 <Button
                     onClick={goBack}
                     text={"Вернутся к выбору специальности"}

@@ -1,12 +1,6 @@
 import styles from './index.module.sass';
-import cn from "classnames/bind";
-import classNames from "classnames/bind";
 import logo from "../../assets/img/logo__footer.svg"
 import React from "react";
-
-classNames();
-
-const cx = cn.bind(styles);
 
 export const Footer = () => {
 

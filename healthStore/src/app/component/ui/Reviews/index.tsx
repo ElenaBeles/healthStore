@@ -8,8 +8,8 @@ export const Reviews: FC<IReviews> = (props: IReviews) => {
     const {reviewsList} = props;
     return (
         <>
-            {reviewsList.length === 0 ? <div>Отзывов пока нет</div> : <div/>}
-            {reviewsList.map(value => <div className={styles.wrapper}>
+            {reviewsList.length === 0 ? <div>Отзывов пока нет</div> :
+            reviewsList.map(value => <div className={styles.wrapper}>
                 <h3>{value.name}</h3>
                 <p>{value.review}</p>
             </div>)}

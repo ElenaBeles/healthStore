@@ -8,8 +8,7 @@ import SignInSchema from "../Schems/SignInSchema";
 import {useState} from "react";
 import {checkFormValid} from "../CommonActionForm";
 
-
-export const SignInDoctorForm = (props: any) => {
+export const SignInDoctorForm = () => {
     const {modalStore: {clearCurrentModal}} = useStores();
     const {userStore: {getUserId}} = useStores();
     const {doctorStore: {authorization}} = useStores();
@@ -30,7 +29,6 @@ export const SignInDoctorForm = (props: any) => {
                 )
             })
     }
-
 
     return (
         <div>

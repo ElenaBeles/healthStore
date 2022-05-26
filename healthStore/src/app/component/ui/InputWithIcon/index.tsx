@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {IInputWithIcon} from "./index.interfaces";
 import style from './index.module.sass';
 import cn from "classnames/bind";
@@ -9,7 +9,7 @@ classNames();
 
 const cx = cn.bind(style);
 
-export const InputWithIcon = (props: IInputWithIcon) => {
+export const InputWithIcon: FC<IInputWithIcon> = (props: IInputWithIcon) => {
     const {value, onChange, placeholder, type = 'text', src, status} = props;
 
     return (
